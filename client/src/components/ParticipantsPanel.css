@@ -1,0 +1,38 @@
+.participants-panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.participants-header {
+  padding: 12px;
+  font-weight: 600;
+  border-bottom: 1px solid #eee;
+}
+
+.participants-body {
+  flex: 1;
+  padding: 12px;
+  overflow-y: auto;
+}
+
+.participant-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  font-size: 14px;
+}
+
+.kick-btn {
+  background: none;
+  border: none;
+  color: #7765da;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.empty-text {
+  color: #888;
+  font-size: 14px;
+}
