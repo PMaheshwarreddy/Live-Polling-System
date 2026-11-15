@@ -1,0 +1,61 @@
+{
+  "name": "classpulse",
+  "private": true,
+  "type": "module",
+  "description": "ClassPulse AI: real-time classroom polling with a pluggable, benchmarked RAG engine",
+  "license": "MIT",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "concurrently -n server,worker,web -c magenta,yellow,cyan \"npm run dev -w @classpulse/server\" \"npm run dev -w @classpulse/ai-worker\" \"npm run dev -w @classpulse/web\"",
+    "db:up": "docker compose up -d postgres redis",
+    "db:migrate": "npm run migrate -w @classpulse/server",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "test": "vitest run packages apps",
+    "build": "npm run build -w @classpulse/web",
+    "eval": "npm run eval -w @classpulse/evals --",
+    "e2e": "playwright test -c e2e"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.1",
+    "@types/node": "^22.10.0",
+    "concurrently": "^9.1.0",
+    "eslint": "^9.39.1",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "globals": "^16.5.0",
+    "prettier": "^3.4.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.7.0",
+    "typescript-eslint": "^8.18.0",
+    "vitest": "^3.0.0",
+    "@playwright/test": "^1.49.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PMaheshwarreddy/Live-Polling-System.git"
+  },
+  "keywords": [
+    "classroom",
+    "polling",
+    "education",
+    "ollama",
+    "rag",
+    "pgvector",
+    "socket.io",
+    "local-ai",
+    "edtech"
+  ],
+  "prettier": {
+    "singleQuote": false,
+    "semi": true,
+    "trailingComma": "all",
+    "printWidth": 100
+  }
+}

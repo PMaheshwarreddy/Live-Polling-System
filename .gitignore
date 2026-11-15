@@ -1,0 +1,17 @@
+node_modules/
+dist/
+.env
+.env.*
+!.env.example
+*.log
+.DS_Store
+coverage/
+.turbo/
+uploads/
+packages/evals/results/*.json
+!packages/evals/results/.gitkeep
+.cache/
+e2e/report/
+e2e/test-results/
+e2e/screens/
+.vite/

@@ -1,0 +1,19 @@
+{
+  "name": "@classpulse/evals",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "eval": "tsx --env-file-if-exists=../../.env src/run.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@classpulse/rag-core": "*",
+    "@classpulse/shared": "*",
+    "pg": "^8.13.0"
+  },
+  "devDependencies": {
+    "@types/pg": "^8.11.10"
+  },
+  "license": "MIT"
+}

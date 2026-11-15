@@ -1,0 +1,25 @@
+{
+  "document": "energy-in-cells.md",
+  "title": "Energy in Cells",
+  "note": "`expect` is a phrase that only appears in the passage that answers the question. `type`: keyword = shares rare words with the passage; paraphrase = asked in different words; multi-hop = needs linked ideas.",
+  "questions": [
+    { "q": "Which enzyme fixes carbon dioxide in the Calvin cycle?", "expect": "RuBisCO attaches carbon dioxide", "type": "keyword" },
+    { "q": "Where in the chloroplast do the light-dependent reactions take place?", "expect": "light-dependent reactions happen in the thylakoid membranes", "type": "keyword" },
+    { "q": "What is splitting water during photosynthesis called?", "expect": "photolysis", "type": "keyword" },
+    { "q": "Where does glycolysis happen in the cell?", "expect": "glycolysis, which takes place in the cytoplasm", "type": "keyword" },
+    { "q": "What does yeast produce during alcoholic fermentation?", "expect": "turning pyruvate into ethanol and carbon dioxide", "type": "keyword" },
+    { "q": "What is the light compensation point?", "expect": "light compensation point is the light intensity", "type": "keyword" },
+    { "q": "Why do leaves look green?", "expect": "reflects green light", "type": "paraphrase" },
+    { "q": "Where does the oxygen that we breathe actually come from?", "expect": "the oxygen we breathe comes from water", "type": "paraphrase" },
+    { "q": "Why do my legs burn after sprinting?", "expect": "burning feeling in tired muscles", "type": "paraphrase" },
+    { "q": "Why does bread dough get bigger?", "expect": "make bread rise", "type": "paraphrase" },
+    { "q": "How do farmers grow more tomatoes in a glasshouse?", "expect": "Greenhouse farmers raise carbon dioxide levels", "type": "paraphrase" },
+    { "q": "Why does photosynthesis slow down when it is extremely hot?", "expect": "denature those enzymes", "type": "paraphrase" },
+    { "q": "How many sugar-making loops are needed for one glucose?", "expect": "six turns of the Calvin cycle", "type": "paraphrase" },
+    { "q": "Which part of the mitochondrion has folds to increase surface area?", "expect": "called the cristae", "type": "paraphrase" },
+    { "q": "What happens to the electrons at the end of the chain in mitochondria?", "expect": "Oxygen is the final electron acceptor", "type": "multi-hop" },
+    { "q": "What do the products of the light reactions power?", "expect": "power the second stage of photosynthesis", "type": "multi-hop" },
+    { "q": "Do plants give off carbon dioxide in the dark, and why?", "expect": "at night, when there is no light, plants only respire", "type": "multi-hop" },
+    { "q": "How much more ATP does aerobic respiration give than anaerobic?", "expect": "only 2 ATP per glucose", "type": "multi-hop" }
+  ]
+}

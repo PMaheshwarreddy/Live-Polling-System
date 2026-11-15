@@ -1,0 +1,61 @@
+services:
+  postgres:
+    image: pgvector/pgvector:pg16
+    environment:
+      POSTGRES_USER: classpulse
+      POSTGRES_PASSWORD: classpulse
+      POSTGRES_DB: classpulse
+    ports: ["5432:5432"]
+    volumes: [pgdata:/var/lib/postgresql/data]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U classpulse"]
+      interval: 3s
+      retries: 20
+
+  redis:
+    image: redis:7-alpine
+    ports: ["6379:6379"]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 3s
+      retries: 20
+
+  server:
+    build: { context: ., dockerfile: apps/server/Dockerfile }
+    profiles: [full]
+    env_file: .env
+    environment:
+      DATABASE_URL: postgres://classpulse:classpulse@postgres:5432/classpulse
+      REDIS_URL: redis://redis:6379
+      OLLAMA_URL: http://ollama:11434
+    volumes: [uploads:/app/apps/server/uploads]
+    ports: ["5000:5000"]
+    depends_on:
+      postgres: { condition: service_healthy }
+      redis: { condition: service_healthy }
+
+  ai-worker:
+    build: { context: ., dockerfile: apps/ai-worker/Dockerfile }
+    profiles: [full]
+    env_file: .env
+    environment:
+      DATABASE_URL: postgres://classpulse:classpulse@postgres:5432/classpulse
+      REDIS_URL: redis://redis:6379
+      OLLAMA_URL: http://ollama:11434
+    volumes: [uploads:/app/uploads]
+    depends_on:
+      postgres: { condition: service_healthy }
+      redis: { condition: service_healthy }
+
+  # Local models. After the first start: docker compose exec ollama ollama pull qwen2.5:3b
+  # (and qwen2.5:1.5b, all-minilm). Skip this service if Ollama is already installed on the host.
+  ollama:
+    image: ollama/ollama:latest
+    profiles: [full]
+    ports: ["11434:11434"]
+    volumes: [ollama:/root/.ollama]
+
+volumes:
+  pgdata:
+  uploads:
+  ollama:
